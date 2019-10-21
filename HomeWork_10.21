@@ -1,0 +1,140 @@
+import random  # if 可以用switch来替换
+count = 1
+right = 0
+T = []
+
+# 捕获异常 判断 输入的题目是否是 合法数据
+try:
+    sum_count = int(input("请输入一个整数："))
+except ValueError:
+
+    print("输入异常~~~~请输入整数来规定题目的数目")
+    exit()
+except Exception as result:
+
+    print("未知错误 %s" % result)
+    exit()
+
+# 打开 txt文件 进行编辑
+doc = open('D:\out.txt', 'a')
+for i in range(0, sum_count):
+    a = random.randint(0, 100)
+    # 作为除数
+    b = random.randint(1, 100)
+    op = ['+', '-', '*', '/']
+    d = random.choice(op)
+    if d == '+':
+        result1 = a + b
+        R = [a, d, b, result1]
+        L = R[0], R[1], R[2], R[3]
+        Q = R[2], R[1], R[0], R[3]
+        if result1 <= 100:
+            if L not in T:
+                if Q not in T:
+                    print("%d、 %d %s %d = %d" % (count, a, d, b, result1))
+                    print("%d、 %d %s %d = %d" % (count, a, d, b, result1), file=doc)
+                    T.append(L)
+                    count += 1
+        else:
+            while 1:
+                a = random.randint(0, 2)
+                b = random.randint(0, 2)
+                result1 = a + b
+                R = [a, d, b, result1]
+                L = R[0], R[1], R[2], R[3]
+                Q = R[2], R[1], R[0], R[3]
+                if result1 <= 100:
+                    if L not in T:
+                        if Q not in T:
+                            print("%d、 %d %s %d = %d" % (count, a, d, b, result1))
+                            print("%d、 %d %s %d = %d" % (count, a, d, b, result1), file=doc)
+                            T.append(L)
+                            break
+            count += 1
+    elif d == '-':
+        result2 = a - b
+        R = [a, d, b, result2]
+        L = R[0], R[1], R[2], R[3]
+        Q = R[2], R[1], R[0], R[3]
+        if result2 < 100:
+            if L not in T:
+                if Q not in T:
+                    print("%d、 %d %s %d = %d" % (count, a, d, b, result2))
+                    print("%d、 %d %s %d = %d" % (count, a, d, b, result2), file=doc)
+                    T.append(L)
+                    count += 1
+        else:
+            while 1:
+                a = random.randint(0, 100)
+                b = random.randint(0, 100)
+                result2 = a - b
+                R = [a, d, b, result2]
+                L = R[0], R[1], R[2], R[3]
+                Q = R[2], R[1], R[0], R[3]
+                if result2 <= 100:
+                    if L not in T:
+                        if Q not in T:
+                            print("%d、 %d %s %d = %d" % (count, a, d, b, result2))
+                            print("%d、 %d %s %d = %d" % (count, a, d, b, result2), file=doc)
+                            T.append(L)
+                            break
+            count += 1
+    elif d == '*':
+        result3 = a * b
+        R = [a, d, b, result3]
+        L = R[0], R[1], R[2], R[3]
+        Q = R[2], R[1], R[0], R[3]
+        if result3 < 100:
+            if L not in T:
+                if Q not in T:
+                    print("%d、 %d %s %d = %d" % (count, a, d, b, result3))
+                    print("%d、 %d %s %d = %d" % (count, a, d, b, result3), file=doc)
+                    T.append(L)
+                    count += 1
+        else:
+            while 1:
+                a = random.randint(0, 100)
+                b = random.randint(0, 100)
+                result3 = a * b
+                R = [a, d, b, result3]
+                L = R[0], R[1], R[2], R[3]
+                Q = R[2], R[1], R[0], R[3]
+                if result3 <= 100:
+                    if L not in T:
+                        if Q not in T:
+                            print("%d、 %d %s %d = %d" % (count, a, d, b, result3))
+                            print("%d、 %d %s %d = %d" % (count, a, d, b, result3), file=doc)
+                            T.append(L)
+                            break
+            count += 1
+    else:
+        result4 = a / b
+        R = [a, d, b, result4]
+        L = R[0], R[1], R[2], R[3]
+        Q = R[2], R[1], R[0], R[3]
+        if result4 < 100:
+            if L not in T:
+                if Q not in T:
+                    print("%d、 %d %s %d = %d" % (count, a, d, b, result4))
+                    print("%d、 %d %s %d = %d" % (count, a, d, b, result4), file=doc)
+                    T.append(L)
+                    count += 1
+        else:
+            while 1:
+                a = random.randint(0, 100)
+                b = random.randint(0, 100)
+                result4 = a / b
+                R = [a, d, b, result4]
+                L = R[0], R[1], R[2], R[3]
+                Q = R[2], R[1], R[0], R[3]
+                if result4 <= 100:
+                    if L not in T:
+                        if Q not in T:
+                            print("%d、 %d %s %d = %d" % (count, a, d, b, result4))
+                            print("%d、 %d %s %d = %d" % (count, a, d, b, result4), file=doc)
+                            T.append(L)
+                            break
+            count += 1
+print('输出结束,共输出%d道题' % (count-1))
+doc.close()
+print(T)
